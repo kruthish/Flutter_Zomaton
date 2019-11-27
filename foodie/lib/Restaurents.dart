@@ -12,6 +12,7 @@ class Restaurents extends StatefulWidget {
 
 class _RestaurentsState extends State<Restaurents> {
   List restaurentList = [];
+  String imageValue;
   @override
   void initState() {
     super.initState();
@@ -36,30 +37,39 @@ class _RestaurentsState extends State<Restaurents> {
       body: new ListView.builder(
         itemCount: restaurentList.length,
         itemBuilder: (context, int index){
+          
+          this.imageValue = '${restaurentList[index]["restaurant"]["thumb"]}';
+          if (this.imageValue == ""){
+            this.imageValue = 'https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2019/08/03091106/Trees-768x511.jpg';
+          }
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              color: Colors.blueGrey,
+              color: Colors.black87,
               child: Column(
                 children: <Widget>[
                   Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                  image: DecorationImage(
-                  
-                  image: NetworkImage('${restaurentList[index]["restaurant"]["thumb"]}'),
-                    fit: BoxFit.cover
+                    height: 200,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(    
+                        image: NetworkImage(this.imageValue),
+                        fit: BoxFit.cover
                       )
                     ),
                   ),
-
-
+                  
                   ListTile(
-                  title: Text('${restaurentList[index]["restaurant"]["name"]}'),
+                  title: Text('${restaurentList[index]["restaurant"]["name"]}', style: TextStyle(fontWeight: FontWeight.bold , color: Colors.white),),
                   onTap: (){
                     
                     },
                   ),
+                  ListTile(
+                    title: Text('${restaurentList[index]["restaurant"]["cuisines"]}', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white),),
+                  ),
+                  ListTile(
+                    title: Text('${restaurentList[index]["restaurant"]["location"]["address"]}', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white),),
+                  )
                 ],
               ),
             ),
