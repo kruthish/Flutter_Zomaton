@@ -39,12 +39,16 @@ class _RestaurentsState extends State<Restaurents> {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              color: Colors.green,
+              color: Colors.blueGrey,
               child: Column(
                 children: <Widget>[
-                  CircleAvatar(
-                    backgroundImage: NetworkImage('https://b.zmtcdn.com/images/developers/apihome_bg.jpg'),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image(
+                      image: NetworkImage('${restaurentList[index]["restaurant"]["thumb"]}'),
+                    ),
                   ),
+
                   ListTile(
                   title: Text('${restaurentList[index]["restaurant"]["name"]}'),
                   onTap: (){
