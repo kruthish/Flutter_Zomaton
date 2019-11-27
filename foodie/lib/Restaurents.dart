@@ -42,12 +42,17 @@ class _RestaurentsState extends State<Restaurents> {
               color: Colors.blueGrey,
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image(
-                      image: NetworkImage('${restaurentList[index]["restaurant"]["thumb"]}'),
+                  Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                  image: DecorationImage(
+                  
+                  image: NetworkImage('${restaurentList[index]["restaurant"]["thumb"]}'),
+                    fit: BoxFit.cover
+                      )
                     ),
                   ),
+
 
                   ListTile(
                   title: Text('${restaurentList[index]["restaurant"]["name"]}'),
